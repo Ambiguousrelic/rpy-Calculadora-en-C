@@ -1,5 +1,5 @@
 /*
-Yessica Fariña ci 501377
+Yessica Fariña ci 5013777
 Ralf Adam ci 5023482
 Pamela Franco ci 5346389
 */
@@ -118,7 +118,7 @@ void opReal(){
 
 void opRaizcuadrada(){
 	int numero;
-	int r;
+	float r;
 	do
 	{	
   		printf("\nIngrese un numero:");
@@ -126,18 +126,87 @@ void opRaizcuadrada(){
   		getchar();
 	}while (numero<0);	
 	r=sqrt(numero);
-	printf("El raiz cuadrada de %d es: %d ", numero,r);
+	printf("El raiz cuadrada de %d es: %.2f ", numero,r);
 }
 
-void opPotencia(){}
-void opSen(){}
-void opCos(){}
-void opTan(){}
-void opLog(){}
-void opCeil(){}
-void opFloor(){}
+void opPotencia(){
+	int numero;
+	int Potencia;
+	int r;	
+  		printf("\nIngrese un numero:");
+  		scanf("%d",&numero);
+  		getchar();
+  		printf("\nIngrese la potencia:");
+  		scanf("%d",&Potencia);
+  		getchar();	
+	r=pow(numero, Potencia);
+	printf("La Potencia de %d elevado a %d es: %d  ", numero,Potencia,r);
+}
+void opSen(){
+	float numero;
+	float r;
+	do
+	{	
+  		printf("\nIngrese un numero:");
+  		scanf("%f",&numero);
+  		getchar();
+	}while (!(numero>=0 || numero<=360));	
+	r=sin((numero*3.14)/180);
+	printf("El Seno de %.0f es: %.2f ", numero,r);
+}
+void opCos(){
+	float numero;
+	float r;
+	do
+	{	
+  		printf("\nIngrese un numero:");
+  		scanf("%f",&numero);
+  		getchar();
+	}while (!(numero>=0 || numero<=360));	
+	r=cos((numero*3.14)/180);
+	printf("El Coseno de %.0f es: %.2f ", numero,r);
+}
+void opTan(){
+	float numero;
+	float r;
+	do
+	{	
+  		printf("\nIngrese un numero:");
+  		scanf("%f",&numero);
+  		getchar();
+	}while (!(numero>=0 || numero<=360));	
+	r=tan((numero*3.14)/180);
+	printf("El Tangente de %.0f es: %.2f ", numero,r);
+}
+void opLog(){
+	float numero;
+	float r;	
+  		printf("\nIngrese un numero:");
+  		scanf("%f",&numero);
+  		getchar();	
+	r=log10(numero);
+	printf("El Logaritmo de %.0f es: %.2f ", numero,r);
+}
 
+void opCeil(){
+	float numero;
+	float r;	
+  		printf("\nIngrese un numero:");
+  		scanf("%f",&numero);
+  		getchar();	
+	r=ceil(numero);
+	printf("El ceiling de %.2f es: %.2f ", numero,r);
+}
 
+void opFloor(){
+	float numero;
+	float r;	
+  		printf("\nIngrese un numero:");
+  		scanf("%f",&numero);
+  		getchar();	
+	r=floor(numero);
+	printf("El floor de %.2f es: %.2f ", numero,r);
+}
 
 
 void opFraccion(){
