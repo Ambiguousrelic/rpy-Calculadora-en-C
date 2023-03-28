@@ -23,6 +23,8 @@ void opCeil();
 void opFloor();
 void opRaizcuadrada();
 
+int mcM();
+
 int main(){
 	
 	ingresar();
@@ -33,7 +35,7 @@ return 0;
 int ingresar()
 { 
  int opcion=0;
- printf("Calculadora\nOpciones\n 1. Enteros  2. Reales  3. Fracciones");
+ printf("Calculadora\nOpciones\n 1. Enteros  2. Reales  3. Fracciones   0. Finalizar");
   do
   {	
   		printf("\nCon que tipo de numero desea trabajar:");
@@ -74,8 +76,16 @@ void opEntero(){
 		case '-':resultado = nroEntero1 - nroEntero2;
 				printf("\nresultado = %d",resultado);
 			break;
-		case '/':resultado = nroEntero1 / nroEntero2;resto = nroEntero1%nroEntero2;
-							printf("\nresultado = %d \nresto = %d",resultado,resto);
+		case '/':
+		
+			if(nroEntero2 == 0){
+				printf("\nError: no se puede dividir entre 0");
+			}else{
+				resultado = nroEntero1 / nroEntero2;
+				resto = nroEntero1%nroEntero2;
+				printf("\nresultado = %d \nresto = %d",resultado,resto);
+			}
+
 			break;
 		case '*':resultado = nroEntero1 * nroEntero2;
 				printf("\nresultado = %d",resultado);
@@ -210,5 +220,103 @@ void opFloor(){
 
 
 void opFraccion(){
-	printf("operacion fraccion");
+	// Numerador1/Denominador1 Operación Numerador2/Denominador2 
+	
+	int denominador1;
+	int numerador1;
+	
+	char operador;
+	
+	int denominador2;
+	int numerador2;
+	
+	char aux;
+	char aux2;
+	
+	int d_respuesta = 0;
+	int n_respuesta = 0;
+	
+	do{
+
+		printf("\nIngrese las fracciones y la operacion:");
+		printf("\nEj; xx/yy + xx/yy");
+		printf("\n: ");
+		scanf("%d %c %d %c %d %c %d",&numerador1,&aux,&denominador1, &operador, &numerador2, &aux2, &denominador2);
+		getchar();
+		
+		
+	}while((denominador1>99 || denominador2>99 || numerador1>99 || numerador2>99)
+		|| !(operador=='*' || operador=='+' || operador=='-'  || operador=='/')
+		|| (denominador1==0 || denominador2==0)
+	);
+
+	
+	switch (operador){
+	case '+':
+		
+		if(denominador1==denominador2){
+			n_respuesta = numerador1 + numerador2;
+			d_respuesta = denominador1;
+		}else{
+			d_respuesta = mcM(denominador1, denominador2);
+
+			printf("\nd_respuesta es: %d\n", d_respuesta);
+			// n_respuesta = ((d_respuesta/denominador1)*numerador1)+((d_respuesta/denominador2)*numerador2);
+		}
+		
+		
+		break;
+	case '-':
+		printf("resta");
+		break;
+	case '/':
+		printf("division");
+		break;
+	case '*':
+		printf("multiplicacion");
+		break;
+	}
+	
+	//salida:  Numerador1/Denominador1 Operación Numerador2/Denominador2 = NumeradorR/DenominadorR 
+	
+	printf("\nSalida = %d/%d %c %d/%d = %d/%d", numerador1, denominador1, operador, numerador2, denominador2, n_respuesta, d_respuesta);
+	
 }
+
+int mcM(int n1, int n2){
+	int mcd;
+	
+  while (n2 > 0) {
+    mcd = n1 % n2;
+    n1 = n2;
+    n2 = mcd;
+  }
+  
+  
+  
+	return (n1 * n2) / mcd;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
