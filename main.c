@@ -253,7 +253,6 @@ void opFraccion(){
 	
 	switch (operador){
 	case '+':
-		
 		if(denominador1==denominador2){
 			n_respuesta = numerador1 + numerador2;
 			d_respuesta = denominador1;
@@ -266,13 +265,23 @@ void opFraccion(){
 		
 		break;
 	case '-':
-		printf("resta");
+		if(denominador1==denominador2){
+			n_respuesta = numerador1 - numerador2;
+			d_respuesta = denominador1;
+			
+		}else{
+			d_respuesta = mcM(denominador1, denominador2);
+			n_respuesta = ((d_respuesta/denominador1)*numerador1)+((d_respuesta/denominador2)*numerador2);
+		}
+		
 		break;
 	case '/':
-		printf("division");
+		n_respuesta = numerador1*denominador2;
+		d_respuesta = numerador2*denominador1;
 		break;
 	case '*':
-		printf("multiplicacion");
+		n_respuesta = numerador1 * numerador2;
+		d_respuesta = denominador1 * denominador2;
 		break;
 	}
 	
