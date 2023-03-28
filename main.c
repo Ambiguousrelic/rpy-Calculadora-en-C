@@ -14,7 +14,7 @@ void opFraccion();
 int ingresar();
 
 
-void opPotencia();
+void opAbsoluto();
 void opSen();
 void opCos();
 void opTan();
@@ -58,17 +58,18 @@ return opcion;
 }
 
 void opEntero(){
-	 int nroEntero1=0;
-	 char operador;
-	 int nroEntero2=0;
-	 int resultado;
-	 int resto;
-  do
-  {	
-  		printf("\nIngrese una operacion:");
-  		scanf("%d %c %d",&nroEntero1,&operador,&nroEntero2);
-  		getchar();
+	int nroEntero1=0;
+	char operador;
+	int nroEntero2=0;
+	int resultado;
+	int resto;
+  do{	  
+	printf("\nIngrese una operacion:");
+	scanf("%d %c %d",&nroEntero1,&operador,&nroEntero2);
+	getchar();
 	}while (!(operador=='*' || operador=='+' || operador=='-'  || operador=='/'));	
+	
+	
 	switch (operador){
 		case '+':resultado = nroEntero1 + nroEntero2;
 							printf("\nresultado = %d",resultado);
@@ -87,7 +88,8 @@ void opEntero(){
 			}
 
 			break;
-		case '*':resultado = nroEntero1 * nroEntero2;
+		case '*':
+				resultado = nroEntero1 * nroEntero2;
 				printf("\nresultado = %d",resultado);
 			break;
 	}
@@ -95,7 +97,7 @@ void opEntero(){
 
 void opReal(){
 	int opcionreal=0;
-	printf("\nOperaciones con numeros reales\n 1.Raiz Cuadrada  2. Potencia  3. Seno  4.Cos  5.Tan  6.Log  7.Ceil  8.Floor");
+	printf("\nOperaciones con numeros reales\n 1.Raiz Cuadrada  2. Absoluto  3. Seno  4.Cos  5.Tan  6.Log  7.Ceil  8.Floor");
   do
   {	
   		printf("\nCon que operacion desea trabajar:");
@@ -107,7 +109,7 @@ void opReal(){
         		break;
     		case 1:opRaizcuadrada();
         		break;
-    		case 2:opPotencia();
+    		case 2:opAbsoluto();
     			break;
     		case 3:opSen();
     			break;
@@ -139,19 +141,18 @@ void opRaizcuadrada(){
 	printf("El raiz cuadrada de %d es: %.2f ", numero,r);
 }
 
-void opPotencia(){
-	int numero;
-	int Potencia;
+
+void opAbsoluto(){
+	double numero;
 	int r;	
   		printf("\nIngrese un numero:");
-  		scanf("%d",&numero);
+  		scanf("%lf",&numero);
   		getchar();
-  		printf("\nIngrese la potencia:");
-  		scanf("%d",&Potencia);
-  		getchar();	
-	r=pow(numero, Potencia);
-	printf("La Potencia de %d elevado a %d es: %d  ", numero,Potencia,r);
+	r=fabs(numero);
+	printf("El valor absoluto de %.0lf es: %d", numero,r);
 }
+
+
 void opSen(){
 	float numero;
 	float r;
@@ -244,6 +245,9 @@ void opFraccion(){
 		scanf("%d %c %d %c %d %c %d",&numerador1,&aux,&denominador1, &operador, &numerador2, &aux2, &denominador2);
 		getchar();
 		
+		if(denominador1 == 0 || denominador2 == 0){
+			printf("\nError: no se puede dividir entre 0");
+		}
 		
 	}while((denominador1>99 || denominador2>99 || numerador1>99 || numerador2>99)
 		|| !(operador=='*' || operador=='+' || operador=='-'  || operador=='/')
