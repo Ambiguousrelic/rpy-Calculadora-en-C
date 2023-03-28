@@ -258,10 +258,9 @@ void opFraccion(){
 			n_respuesta = numerador1 + numerador2;
 			d_respuesta = denominador1;
 		}else{
+			
 			d_respuesta = mcM(denominador1, denominador2);
-
-			printf("\nd_respuesta es: %d\n", d_respuesta);
-			// n_respuesta = ((d_respuesta/denominador1)*numerador1)+((d_respuesta/denominador2)*numerador2);
+			n_respuesta = ((d_respuesta/denominador1)*numerador1)+((d_respuesta/denominador2)*numerador2);
 		}
 		
 		
@@ -284,17 +283,17 @@ void opFraccion(){
 }
 
 int mcM(int n1, int n2){
-	int mcd;
+	int a = n1;
+	int b = n2;
+	int r;
 	
-  while (n2 > 0) {
-    mcd = n1 % n2;
-    n1 = n2;
-    n2 = mcd;
+  while (b > 0) {
+    r = a % b;
+    a = b;
+    b = r;
   }
-  
-  
-  
-	return (n1 * n2) / mcd;
+
+	return (n1 * n2) / a;
 }
 
 
